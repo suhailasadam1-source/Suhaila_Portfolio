@@ -1,0 +1,232 @@
+.hero {
+  position: relative;
+  padding: 88px 0 60px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  right: -160px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-blue) 22%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero__copy {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.hero__copy--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__greeting {
+  font-family: var(--font-mono);
+  color: var(--accent-blue);
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.hero__title {
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  background: linear-gradient(120deg, var(--text) 30%, var(--accent-blue) 70%, var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 14ch;
+}
+
+.hero__intro {
+  margin-top: 20px;
+  max-width: 52ch;
+  color: var(--text-muted);
+  font-size: 1.08rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.hero__social {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.hero__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero__social a:hover {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+/* Terminal mockup */
+.hero__terminal {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.8s ease 0.15s, transform 0.8s ease 0.15s;
+}
+
+.hero__terminal--in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.terminal {
+  background: var(--navy-900);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--navy-800);
+  box-shadow: 0 30px 60px -30px hsl(var(--shadow-color) / 0.55);
+  overflow: hidden;
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: var(--navy-800);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.terminal__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.terminal__dot--red {
+  background: #ff5f56;
+}
+.terminal__dot--yellow {
+  background: #ffbd2e;
+}
+.terminal__dot--green {
+  background: #27c93f;
+}
+
+.terminal__title {
+  margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.terminal__body {
+  padding: 24px 22px 30px;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  min-height: 220px;
+}
+
+.terminal__line {
+  margin-bottom: 16px;
+}
+
+.terminal__prompt {
+  color: #dfe6ff;
+}
+
+.terminal__prompt-symbol {
+  color: var(--accent-cyan);
+}
+
+.terminal__output {
+  margin-top: 6px;
+  padding-left: 18px;
+  color: var(--accent-cyan);
+  border-left: 2px solid rgba(34, 211, 238, 0.35);
+}
+
+.terminal__cursor {
+  display: inline-block;
+  width: 7px;
+  height: 15px;
+  margin-left: 2px;
+  background: var(--accent-cyan);
+  vertical-align: middle;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.hero__scroll-cue {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  color: var(--text-muted);
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__copy,
+  .hero__terminal,
+  .hero__scroll-cue {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 940px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+}

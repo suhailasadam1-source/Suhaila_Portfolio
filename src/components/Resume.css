@@ -1,0 +1,39 @@
+.resume__panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 46px 44px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(120deg, var(--navy-900), var(--navy-800));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume__panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--accent-cyan) 25%, transparent), transparent 60%);
+  pointer-events: none;
+}
+
+.resume__panel h2 {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  max-width: 20ch;
+  color: #fff;
+}
+
+.resume__panel p {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 42ch;
+}
+
+@media (max-width: 640px) {
+  .resume__panel {
+    padding: 34px 26px;
+  }
+}
